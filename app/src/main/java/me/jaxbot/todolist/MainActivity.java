@@ -70,59 +70,8 @@ public class MainActivity extends AppCompatActivity {
         helper = new HelperTodolist(this);
         floatingActionButton = (FloatingActionButton)findViewById(R.id.fab);
         setUpViews();
-//        SharedPreferences prefs = getSharedPreferences(My_description, MODE_PRIVATE);
-//        String description3 = prefs.getString("desc", "");
-//        String title3 = prefs.getString("titl", "");
-//        String date3 = prefs.getString("datee", "");
-//        String time3 = prefs.getString("timee", "");
-//        Reminder temp = new Reminder(title3, description3, date3, time3);
-//        reminder.add(temp);
-//        adapter.notifyDataSetChanged();
 
-//        recyclerView.OnLongClickListener(new AdapterView.OnItemLongClickListener() {
-//            @Override
-//            public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int i, long l) {
-//
-//
-//                AlertDialog.Builder b = new AlertDialog.Builder(MainActivity.this);
-//                b.setTitle("Confirm");
-//                b.setIcon(android.R.drawable.ic_dialog_alert);
-//                b.setMessage("Are You Sure You Want To Delete?");
-//                b.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int index) {
-//                        HelperTodolist helperTodolist = new HelperTodolist(MainActivity.this);
-//                        SQLiteDatabase db = helperTodolist.getWritableDatabase();
-//                        Reminder rev = reminder.get(i);
-//                        int a = rev.id;
-//
-//
-//                        db.delete(staticmyclass.Table_Name, staticmyclass._Id + "=?",
-//                                new String[]{String.valueOf(a)});
-//
-//                        db.close();
-//
-//                        reminder.remove(i);
-//                        adapter.notifyDataSetChanged();
-//
-//                    }
-//                });
-//
-//                b.setNegativeButton("No", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//
-//
-//                        dialogInterface.cancel();
-//                    }
-//                });
-//
-//
-//                b.show();
-//                return true;
-//
-//            }
-//        });
+
 
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -201,30 +150,6 @@ public class MainActivity extends AppCompatActivity {
                 })
         );
     }
-//        recyclerView.OnItemTouchListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//
-//                Intent ii = new Intent();
-//                ii.setClass(MainActivity.this, Main2Activity.class);
-//
-//                String str= reminder.get(i).id+"";
-//                ii.putExtra("id",reminder.get(i).id);
-//                Log.i("TTTTTT", str);
-//
-//
-//                ii.putExtra("title1", reminder.get(i).title);
-//                ii.putExtra("description1", reminder.get(i).description);
-//                ii.putExtra("date1", reminder.get(i).date);
-//                ii.putExtra("time1", reminder.get(i).time);
-//
-//
-//                startActivityForResult(ii, 1);
-//            }
-//        });
-//
-//
-//    }
 
 
     private void setUpViews() {
@@ -304,39 +229,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int a = item.getItemId();
-        if (a == R.id.add) {
-
-//            Intent i = getIntent();
-//            ed1.setText(i.getStringExtra("title"));
-//            ed4.setText(i.getStringExtra("description"));
-//            ed3.setText(i.getStringExtra("time"));
-//            ed2.setText(i.getStringExtra("date"));
-//            if (!ed1.getText().toString().equals("")) {
-//                rr = new Reminder(ed1.getText().toString(), ed4.getText().toString(), ed2.getText().toString(), ed3.getText().toString());
-//                reminder.add(rr);
-//                adapter.notifyDataSetChanged();
-//                SharedPreferences.Editor editor = getSharedPreferences(My_description, MODE_PRIVATE).edit();
-//                editor.putString("titl", ed1.getText().toString() + ":");
-//                editor.putString("desc", ed4.getText().toString() + ":");
-//                editor.putString("datee", ed2.getText().toString() + ":");
-//                editor.putString("timee", ed3.getText().toString() + ":");
-//                editor.commit();
-
-        }
-
-
-
-//
-//            b.setNegativeButton("No", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialog, int which) {
-//                    dialog.cancel();
-//                }
-//            });
-
-
-
-         else if (a == R.id.about) {
+        if (a == R.id.about) {
 
             Intent i = new Intent();
             i.setAction(Intent.ACTION_VIEW);
@@ -354,15 +247,11 @@ public class MainActivity extends AppCompatActivity {
             HelperTodolist helperTodolist = new HelperTodolist(MainActivity.this);
             SQLiteDatabase db =helperTodolist.getWritableDatabase();
              db.delete(staticmyclass.Table_Name,null,null);
-//            db.execSQL(" delete * from "+ staticmyclass.Table_Name+";");
+
             while (reminder.size() != 0) {
                 reminder.remove(reminder.size() - 1);
 
-                //SharedPreferences prefs = getSharedPreferences(My_description, MODE_PRIVATE);
-                // SharedPreferences.Editor.clear();
-//                SharedPreferences.Editor editor = getSharedPreferences(My_description, MODE_PRIVATE).edit();
-//                editor.clear();
-//                editor.commit();
+
             }
             adapter.notifyDataSetChanged();
         }
