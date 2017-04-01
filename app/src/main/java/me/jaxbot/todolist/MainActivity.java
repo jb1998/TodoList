@@ -92,8 +92,9 @@ public class MainActivity extends AppCompatActivity {
                         Intent ii = new Intent();
                         ii.setClass(MainActivity.this, Main2Activity.class);
 
-                        String str = reminder.get(position).id + "";
-                        ii.putExtra("id", str);
+
+                        ii.putExtra("id", position);
+
 
 
 
