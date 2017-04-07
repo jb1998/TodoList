@@ -17,7 +17,7 @@ public class Main2Activity extends AppCompatActivity {
 EditText title,description,date,time;
     Button submit2;
     String title2,description2,date2,time2,title2c,description2c,date2c,time2c;
-    int id1;
+    String id1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,8 +28,9 @@ EditText title,description,date,time;
         date=(EditText)findViewById(R.id.date);
         time=(EditText)findViewById(R.id.time);
         Intent i = getIntent();
-        id1=i.getIntExtra("id",-1);
-
+        id1=i.getStringExtra("id");
+      //  Log.i("sample", id1);
+        Log.d("idlala",id1);
         title2=i.getStringExtra("title1");
         description2=i.getStringExtra("description1");
         date2=i.getStringExtra("date1");
@@ -65,18 +66,26 @@ EditText title,description,date,time;
                 Log.i("TTTT", title2);
                 Log.i("TTTT", description2);
                 Log.i("TTTT", date2);
-
+                //Log.i("TTTT",title);
 
                 int ia =db.update(staticmyclass.Table_Name, cv, "id= " +id1,null);
                 Log.d("lalala",String.valueOf(ia));
-                Log.i("qqqqqq", id1+"");
                 Intent i = new Intent();
-
+               // Log.i("helllo", id1);
 
                 setResult(Activity.RESULT_OK, i);
                 finish();
-
-
+//                title2c=title.getText().toString();
+//                description2c=description.getText().toString();
+//                date2c=date.getText().toString();
+//                time2c=time.getText().toString();
+//                Intent i= new Intent();
+//                i.putExtra("title1",title2c);
+//                i.putExtra("description1",description2c);
+//                i.putExtra("date1",date2c);
+//                i.putExtra("time1",time2c);
+//                setResult(Activity.RESULT_OK,i);
+//                finish();
             }
         });
     }

@@ -92,8 +92,8 @@ public class MainActivity extends AppCompatActivity {
                         Intent ii = new Intent();
                         ii.setClass(MainActivity.this, Main2Activity.class);
 
-
-                        ii.putExtra("id", position);
+                        String str = reminder.get(position).id + "";
+                        ii.putExtra("id", str);
 
 
 
@@ -165,6 +165,7 @@ public class MainActivity extends AppCompatActivity {
             int id = c.getInt(c.getColumnIndex(staticmyclass._Id));
             String title = c.getString(c.getColumnIndex(staticmyclass.My_title));
             String description = c.getString(c.getColumnIndex(staticmyclass.My_description));
+
             String date = c.getString(c.getColumnIndex(staticmyclass.My_date));
             String time = c.getString(c.getColumnIndex(staticmyclass.My_time));
 //            Log.i("TAG5", "setUpViews: ");
