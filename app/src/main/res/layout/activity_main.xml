@@ -56,7 +56,7 @@
         fab:menu_labels_position="left"
         fab:menu_openDirection="up"
         fab:menu_backgroundColor="@android:color/transparent"
-        fab:menu_fab_label="Here You Go.."
+        fab:menu_fab_label="Here You Go.!!"
         >
 
         <com.github.clans.fab.FloatingActionButton
@@ -64,7 +64,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/download"
-            android:ScaleType="fitStart"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
             fab:fab_size="mini"
             fab:fab_label="ADD Todo" />
         <com.github.clans.fab.FloatingActionButton
@@ -72,7 +73,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/fabo"
-            android:ScaleType="fitStart"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
             fab:fab_size="mini"
             fab:fab_label="About" />
 
@@ -81,7 +83,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/fres"
-            android:ScaleType="fitStart"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
             fab:fab_size="mini"
             fab:fab_label="Reset Data" />
         <com.github.clans.fab.FloatingActionButton
@@ -89,7 +92,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ffed"
-            android:ScaleType="fitStart"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
             fab:fab_size="mini"
             fab:fab_label="FeedBack" />
     </com.github.clans.fab.FloatingActionMenu>
