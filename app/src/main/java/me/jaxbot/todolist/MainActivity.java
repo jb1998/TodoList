@@ -12,7 +12,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
-import android.support.design.widget.FloatingActionButton;
+//import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -39,50 +39,134 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 import static android.R.attr.format;
 import static android.R.attr.logo;
-
+//import com.github.clans.fab.FloatingActionButton;
+//import com.github.clans.fab.FloatingActionMenu;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     HelperTodolist helper;
     static final String My_description = "des";
-
+    FloatingActionMenu materialDesignFAM;
+     FloatingActionButton fabreset, fababout, fabfeedback,fabadd;
     static String finaldate;
 
  MyAdapterRecycler adapter;
     ArrayList<Reminder> reminder;
 
 
-    FloatingActionButton floatingActionButton;
+//    FloatingActionButton floatingActionButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         reminder = new ArrayList<>();
+        fabadd = (FloatingActionButton) findViewById(R.id.add);
+        fabreset = (FloatingActionButton) findViewById(R.id.resetdata);
+        fabfeedback = (FloatingActionButton) findViewById(R.id.feedback);
+        fababout = (FloatingActionButton) findViewById(R.id.about);
+//        fam = (FloatingActionMenu) findViewById(R.id.fab_menu);
+
         recyclerView = (RecyclerView) findViewById(R.id.recycle);
         recyclerView.setHasFixedSize(true);
-
-        adapter = new MyAdapterRecycler(this,reminder);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        helper = new HelperTodolist(this);
-        floatingActionButton = (FloatingActionButton)findViewById(R.id.fab);
-        setUpViews();
-
-
-
-
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+//        fam.setOnMenuToggleListener(new FloatingActionMenu.OnMenuToggleListener() {
+//            @Override
+//            public void onMenuToggle(boolean opened) {
+//                if (opened) {
+//
+//                    showToast("Menu is opened");
+//                } else {
+//                    showToast("Menu is closed");
+//                }
+//            }
+//        });
+//fam.setOnClickListener(new View.OnClickListener() {
+//    @Override
+//    public void onClick(View view) {
+//        if (fam.isOpened()) {
+//            fam.close(true);
+//        }
+//    }
+//});
+//        fam.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (fam.isOpened()) {
+//                    fam.close(true);
+//                }
+//            }
+//        });
+        fabadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent i1 = new Intent();
                 i1.setClass(MainActivity.this, Enteritem.class);
                 startActivityForResult(i1, 2);
             }
         });
+        fabreset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HelperTodolist helperTodolist = new HelperTodolist(MainActivity.this);
+                SQLiteDatabase db =helperTodolist.getWritableDatabase();
+                db.delete(staticmyclass.Table_Name,null,null);
+
+                while (reminder.size() != 0) {
+                    reminder.remove(reminder.size() - 1);
+
+
+                }
+                adapter.notifyDataSetChanged();
+            }
+        });
+        fabfeedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent();
+                i.setAction(Intent.ACTION_SENDTO);
+                i.setData(Uri.parse("mailto:jatinbindra171998@gmail.com"));
+                i.putExtra(Intent.EXTRA_SUBJECT, "feedback");
+                startActivity(i);
+            }
+        });
+        fababout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent();
+                i.setAction(Intent.ACTION_VIEW);
+                Uri uri = Uri.parse("https://jatinbindrablog.wordpress.com");
+                i.setData(uri);
+                startActivity(i);
+            }
+        });
+//        fab.setOnClickListener(onButtonClickfabAdd.setOnClickListener(onButtonClick());());
+//        fabEdit.setOnClickListener(onButtonClick());
+
+
+
+        adapter = new MyAdapterRecycler(this,reminder);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        helper = new HelperTodolist(this);
+
+//        floatingActionButton = (FloatingActionButton)findViewById(R.id.fab);
+        setUpViews();
+
+
+
+
+//        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                Intent i1 = new Intent();
+//                i1.setClass(MainActivity.this, Enteritem.class);
+//                startActivityForResult(i1, 2);
+//            }
+//        });
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(this, recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
@@ -150,9 +234,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                 })
         );
+
     }
 
 
+    private void showToast(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
     private void setUpViews() {
 
         Log.i("TAG4", "setUpViews: ");
@@ -207,58 +295,58 @@ public class MainActivity extends AppCompatActivity {
             }
     }
 
-    @Override
-    public void onBackPressed() {
+//    @Override
+//    public void onBackPressed() {
+//
+//
+//        super.onBackPressed();
+//    }
+//
+//    @Override
+//    public void finish() {
+//
+//        super.finish();
+//    }
 
 
-        super.onBackPressed();
-    }
-
-    @Override
-    public void finish() {
-
-        super.finish();
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.my_menu, menu);
+//        return true;
+//    }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.my_menu, menu);
-        return true;
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int a = item.getItemId();
-        if (a == R.id.about) {
-
-            Intent i = new Intent();
-            i.setAction(Intent.ACTION_VIEW);
-            Uri uri = Uri.parse("http://codechef.com");
-            i.setData(uri);
-            startActivity(i);
-        } else if (a == R.id.feedback) {
-
-            Intent i = new Intent();
-            i.setAction(Intent.ACTION_SENDTO);
-            i.setData(Uri.parse("mailto:jatinbindra171998@gmail.com"));
-            i.putExtra(Intent.EXTRA_SUBJECT, "feedback");
-            startActivity(i);
-        } else if (a == R.id.resetdata) {
-            HelperTodolist helperTodolist = new HelperTodolist(MainActivity.this);
-            SQLiteDatabase db =helperTodolist.getWritableDatabase();
-             db.delete(staticmyclass.Table_Name,null,null);
-
-            while (reminder.size() != 0) {
-                reminder.remove(reminder.size() - 1);
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        int a = item.getItemId();
+//        if (a == R.id.about) {
+//
+//            Intent i = new Intent();
+//            i.setAction(Intent.ACTION_VIEW);
+//            Uri uri = Uri.parse("http://codechef.com");
+//            i.setData(uri);
+//            startActivity(i);
+//        } else if (a == R.id.feedback) {
+//
+//            Intent i = new Intent();
+//            i.setAction(Intent.ACTION_SENDTO);
+//            i.setData(Uri.parse("mailto:jatinbindra171998@gmail.com"));
+//            i.putExtra(Intent.EXTRA_SUBJECT, "feedback");
+//            startActivity(i);
+//        } else if (a == R.id.resetdata) {
+//            HelperTodolist helperTodolist = new HelperTodolist(MainActivity.this);
+//            SQLiteDatabase db =helperTodolist.getWritableDatabase();
+//             db.delete(staticmyclass.Table_Name,null,null);
+//
+//            while (reminder.size() != 0) {
+//                reminder.remove(reminder.size() - 1);
 
 
             }
-            adapter.notifyDataSetChanged();
-        }
+//            adapter.notifyDataSetChanged();
+//        }
 
-        return true;
+//        return true;
 
-    }
-}
+//    }
+//}
