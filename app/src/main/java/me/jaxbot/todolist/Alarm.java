@@ -27,9 +27,9 @@ public class Alarm extends BroadcastReceiver {
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
                 .setSmallIcon(android.R.drawable.ic_menu_report_image)
-                .setContentTitle("Be Alert..!!!")
+                .setContentTitle("Alarm Strikes in..!!")
                 .setAutoCancel(true)
-                .setContentText("Landslide " + m);
+                .setContentText("Spare Time For " + m);
 
 
         Intent resultIntent = new Intent(context, MainActivity.class);
