@@ -110,16 +110,43 @@ public class MainActivity extends AppCompatActivity {
         fabreset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                HelperTodolist helperTodolist = new HelperTodolist(MainActivity.this);
-                SQLiteDatabase db =helperTodolist.getWritableDatabase();
-                db.delete(staticmyclass.Table_Name,null,null);
-
-                while (reminder.size() != 0) {
-                    reminder.remove(reminder.size() - 1);
 
 
-                }
-                adapter.notifyDataSetChanged();
+                AlertDialog.Builder b = new AlertDialog.Builder(MainActivity.this);
+                b.setTitle("Confirm");
+                b.setIcon(android.R.drawable.ic_dialog_alert);
+                b.setMessage("Are You Sure Without A Shadow Of Doubt?");
+                b.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int index) {
+                        HelperTodolist helperTodolist = new HelperTodolist(MainActivity.this);
+                        SQLiteDatabase db =helperTodolist.getWritableDatabase();
+                        db.delete(staticmyclass.Table_Name,null,null);
+
+                        while (reminder.size() != 0) {
+                            reminder.remove(reminder.size() - 1);
+
+
+                        }
+                        adapter.notifyDataSetChanged();
+
+                    }
+                });
+
+                b.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+
+                        dialogInterface.cancel();
+                    }
+                });
+
+
+                b.show();
+
+
+
             }
         });
         fabfeedback.setOnClickListener(new View.OnClickListener() {
@@ -199,7 +226,7 @@ public class MainActivity extends AppCompatActivity {
                         AlertDialog.Builder b = new AlertDialog.Builder(MainActivity.this);
                         b.setTitle("Confirm");
                         b.setIcon(android.R.drawable.ic_dialog_alert);
-                        b.setMessage("Are You Sure You Want To Delete?");
+                        b.setMessage("Are You Sure Without A Shadow Of Doubt?");
                         b.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int index) {
