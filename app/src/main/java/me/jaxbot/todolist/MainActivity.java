@@ -162,11 +162,7 @@ public class MainActivity extends AppCompatActivity {
         fababout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent();
-                i.setAction(Intent.ACTION_VIEW);
-                Uri uri = Uri.parse("https://jatinbindrablog.wordpress.com");
-                i.setData(uri);
-                startActivity(i);
+
             }
         });
 //        fab.setOnClickListener(onButtonClickfabAdd.setOnClickListener(onButtonClick());());

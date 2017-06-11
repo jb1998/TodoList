@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
-
+    android:background="#ffffff"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
@@ -64,8 +64,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/download"
-            android:adjustViewBounds="true"
-            android:scaleType="centerInside"
+            android:scaleType="centerCrop"
+
             fab:fab_size="mini"
             fab:fab_label="ADD Todo" />
         <com.github.clans.fab.FloatingActionButton
@@ -73,8 +73,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/fabo"
-            android:adjustViewBounds="true"
-            android:scaleType="centerInside"
+
+
+            android:scaleType="centerCrop"
             fab:fab_size="mini"
             fab:fab_label="About" />
 
@@ -83,17 +84,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/fres"
-            android:adjustViewBounds="true"
-            android:scaleType="centerInside"
+            android:scaleType="centerCrop"
+
             fab:fab_size="mini"
             fab:fab_label="Reset Data" />
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/feedback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ffed"
-            android:adjustViewBounds="true"
-            android:scaleType="centerInside"
+            android:src="@drawable/download"
+            android:scaleType="centerCrop"
             fab:fab_size="mini"
             fab:fab_label="FeedBack" />
     </com.github.clans.fab.FloatingActionMenu>
