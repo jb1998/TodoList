@@ -11,8 +11,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 //import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,6 +25,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -53,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionMenu materialDesignFAM;
      FloatingActionButton fabreset, fababout, fabfeedback,fabadd;
     static String finaldate;
-
+android.app.ActionBar actionBar;
  MyAdapterRecycler adapter;
     ArrayList<Reminder> reminder;
 
@@ -64,6 +68,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         reminder = new ArrayList<>();
+//        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+//        actionBar = getActionBar();
+//        ColorDrawable colorDrawable = new ColorDrawable(
+//                Color.parseColor("#373836"));
+//        actionBar.setBackgroundDrawable(colorDrawable);
         fabadd = (FloatingActionButton) findViewById(R.id.add);
         fabreset = (FloatingActionButton) findViewById(R.id.resetdata);
         fabfeedback = (FloatingActionButton) findViewById(R.id.feedback);
@@ -162,7 +171,9 @@ public class MainActivity extends AppCompatActivity {
         fababout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+          Intent n=new Intent();
+                n.setClass(getApplicationContext(),About.class);
+                startActivity(n);
             }
         });
 //        fab.setOnClickListener(onButtonClickfabAdd.setOnClickListener(onButtonClick());());
@@ -259,8 +270,30 @@ public class MainActivity extends AppCompatActivity {
         );
 
     }
-
-
+//
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.my_menu, menu);
+//        return true;
+//    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item)
+//    {
+//        switch (item.getItemId())
+//        {
+//            case R.id.share:
+//                 //your code here
+//                return true;
+//
+//            case R.id.rate:
+//                //your code here
+//                return true;
+//
+//        }
+//return true;
+//    }
     private void showToast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }

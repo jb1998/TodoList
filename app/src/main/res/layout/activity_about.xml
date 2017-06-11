@@ -22,12 +22,7 @@
     <TextView
         android:layout_width="368dp"
         android:layout_height="wrap_content"
-        android:text="Features Of Application
--It allows to add multiple todos
--One can delete one todo or all todos just by a click
--Easy modification of previously created Todo
--User Friendly
--OpenSourse for developers for contributions"
+        android:text="Features Of Application \n\n - It allows to add multiple todos \n - One can delete one todo or all todos just by a click\n - Easy modification of previously created Todo\n - User Friendly \n - OpenSourse for developers for contributions"
         android:textSize="18dp"
         android:textColor="#ffffff"
         tools:layout_editor_absoluteY="106dp"

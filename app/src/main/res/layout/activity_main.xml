@@ -12,6 +12,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycle"
         android:layout_width="match_parent"
+        android:paddingTop="56dp"
         android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/menu"
@@ -64,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/download"
-            android:scaleType="centerCrop"
+            android:scaleType="fitXY"
 
             fab:fab_size="mini"
             fab:fab_label="ADD Todo" />
@@ -75,7 +76,7 @@
             android:src="@drawable/fabo"
 
 
-            android:scaleType="centerCrop"
+            android:scaleType="fitXY"
             fab:fab_size="mini"
             fab:fab_label="About" />
 
@@ -84,7 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/fres"
-            android:scaleType="centerCrop"
+            android:scaleType="fitXY"
 
             fab:fab_size="mini"
             fab:fab_label="Reset Data" />
@@ -93,11 +94,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/download"
-            android:scaleType="centerCrop"
+
+            android:scaleType="fitXY"
             fab:fab_size="mini"
             fab:fab_label="FeedBack" />
     </com.github.clans.fab.FloatingActionMenu>
-
 
 
 

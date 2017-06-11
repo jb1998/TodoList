@@ -5,10 +5,9 @@
 
 
 
-    <item android:title="RESET DATA"
-        android:id="@+id/resetdata"/>
-    <item android:title="FEEDBACK"
-        android:id="@+id/feedback"/>
-    <item android:title="ABOUT"
-        android:id="@+id/about"/>
+    <item android:title="Share App"
+        android:id="@+id/share"/>
+    <item android:title="Rate Us"
+        android:id="@+id/rate"/>
+
 </menu>
