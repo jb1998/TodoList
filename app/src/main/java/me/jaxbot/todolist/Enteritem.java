@@ -11,6 +11,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.AlarmClock;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,6 +31,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import static me.jaxbot.todolist.MainActivity.finaldate;
@@ -39,7 +41,7 @@ public class Enteritem extends AppCompatActivity {
   Button select;
     ArrayAdapter<String> adapter;
     ArrayList<String> list;
-
+TextToSpeech t1;
     Button time1, date1, set1;
     DatePickerDialog datePickerDialog;
 
@@ -58,20 +60,21 @@ public class Enteritem extends AppCompatActivity {
         date1 = (Button) findViewById(R.id.date);
         set1 = (Button) findViewById(R.id.set);
         select=(Button)findViewById(R.id.timer);
-
-        list=new ArrayList<String>();
-        list.add("5 minutes");
-        list.add("10 minutes");
-        list.add("30 minutes");
-        list.add("1 day");
-        adapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_dropdown_item);
-
+t1=new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+    @Override
+    public void onInit(int status) {
+   if(status!=TextToSpeech.ERROR)
+   {
+       t1.setLanguage(Locale.UK);
+   }
+    }
+});
 
 select.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
         AlertDialog.Builder builderSingle = new AlertDialog.Builder(Enteritem.this);
-        builderSingle.setIcon(R.drawable.ic_menu_camera);
+        builderSingle.setIcon(R.drawable.th);
         builderSingle.setTitle("Select a option:-");
 
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(Enteritem.this, android.R.layout.select_dialog_singlechoice);
@@ -172,7 +175,9 @@ select.setOnClickListener(new View.OnClickListener() {
 
 
                 setAlarm(Enteritem.this);
-
+                String toSpeak=title;
+                Toast.makeText(getApplicationContext(),"hello",Toast.LENGTH_SHORT).show();
+                t1.speak(toSpeak,TextToSpeech.QUEUE_FLUSH,null);
 
 
                 if (!title.equals("") && !description.equals("") && !date.equals("") && !time.equals("")) {
@@ -204,6 +209,15 @@ select.setOnClickListener(new View.OnClickListener() {
         });
 
 
+    }
+    public void onPause()
+    {
+        if(t1!=null)
+        {
+            t1.stop();
+            t1.shutdown();
+        }
+        super.onPause();
     }
 
 long time_in_mili= TimeUnit.MINUTES.toMillis(1);

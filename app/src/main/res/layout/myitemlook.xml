@@ -10,7 +10,7 @@
     android:layout_height="100dp"
 
     app:cardElevation="15dp"
-    app:cardCornerRadius="13dp"
+
 
     android:background="#0f0">
 

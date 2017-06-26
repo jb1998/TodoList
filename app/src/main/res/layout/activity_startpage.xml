@@ -10,15 +10,6 @@
     android:background="#000"
     tools:context="me.jaxbot.todolist.Startpage">
 
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Here You Go..!!!"
-    android:textSize="30dp"
-    android:textColor="#ffffff"
-    android:layout_alignParentTop="true"
-    android:layout_centerHorizontal="true"
-    android:layout_marginTop="49dp" />
 
 
     <ImageView

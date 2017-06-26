@@ -8,16 +8,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.icu.util.Calendar;
 import android.os.PowerManager;
+import android.speech.tts.TextToSpeech;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
 
 import java.util.Date;
+import java.util.Locale;
 
 
 public class Alarm extends BroadcastReceiver {
     static int i = 0;
-
+TextToSpeech t1;
     @Override
     public void onReceive(Context context, Intent intent) {
 

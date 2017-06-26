@@ -61,53 +61,22 @@ android.app.ActionBar actionBar;
  MyAdapterRecycler adapter;
     ArrayList<Reminder> reminder;
 
-
-//    FloatingActionButton floatingActionButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         reminder = new ArrayList<>();
-//        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
-//        actionBar = getActionBar();
-//        ColorDrawable colorDrawable = new ColorDrawable(
-//                Color.parseColor("#373836"));
-//        actionBar.setBackgroundDrawable(colorDrawable);
+
         fabadd = (FloatingActionButton) findViewById(R.id.add);
         fabreset = (FloatingActionButton) findViewById(R.id.resetdata);
         fabfeedback = (FloatingActionButton) findViewById(R.id.feedback);
         fababout = (FloatingActionButton) findViewById(R.id.about);
-//        fam = (FloatingActionMenu) findViewById(R.id.fab_menu);
+
 
         recyclerView = (RecyclerView) findViewById(R.id.recycle);
         recyclerView.setHasFixedSize(true);
-//        fam.setOnMenuToggleListener(new FloatingActionMenu.OnMenuToggleListener() {
-//            @Override
-//            public void onMenuToggle(boolean opened) {
-//                if (opened) {
-//
-//                    showToast("Menu is opened");
-//                } else {
-//                    showToast("Menu is closed");
-//                }
-//            }
-//        });
-//fam.setOnClickListener(new View.OnClickListener() {
-//    @Override
-//    public void onClick(View view) {
-//        if (fam.isOpened()) {
-//            fam.close(true);
-//        }
-//    }
-//});
-//        fam.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (fam.isOpened()) {
-//                    fam.close(true);
-//                }
-//            }
-//        });
+
+
         fabadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -124,7 +93,7 @@ android.app.ActionBar actionBar;
                 AlertDialog.Builder b = new AlertDialog.Builder(MainActivity.this);
                 b.setTitle("Confirm");
                 b.setIcon(android.R.drawable.ic_dialog_alert);
-                b.setMessage("Are You Sure Without A Shadow Of Doubt?");
+                b.setMessage("Are You Sure to delete all Todos??");
                 b.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int index) {
@@ -176,8 +145,6 @@ android.app.ActionBar actionBar;
                 startActivity(n);
             }
         });
-//        fab.setOnClickListener(onButtonClickfabAdd.setOnClickListener(onButtonClick());());
-//        fabEdit.setOnClickListener(onButtonClick());
 
 
 
@@ -186,21 +153,9 @@ android.app.ActionBar actionBar;
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         helper = new HelperTodolist(this);
 
-//        floatingActionButton = (FloatingActionButton)findViewById(R.id.fab);
         setUpViews();
 
 
-
-
-//        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                Intent i1 = new Intent();
-//                i1.setClass(MainActivity.this, Enteritem.class);
-//                startActivityForResult(i1, 2);
-//            }
-//        });
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(this, recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
@@ -233,7 +188,7 @@ android.app.ActionBar actionBar;
                         AlertDialog.Builder b = new AlertDialog.Builder(MainActivity.this);
                         b.setTitle("Confirm");
                         b.setIcon(android.R.drawable.ic_dialog_alert);
-                        b.setMessage("Are You Sure Without A Shadow Of Doubt?");
+                        b.setMessage("Are You Sure to delete this Todo?");
                         b.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int index) {
@@ -270,30 +225,7 @@ android.app.ActionBar actionBar;
         );
 
     }
-//
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.my_menu, menu);
-//        return true;
-//    }
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item)
-//    {
-//        switch (item.getItemId())
-//        {
-//            case R.id.share:
-//                 //your code here
-//                return true;
-//
-//            case R.id.rate:
-//                //your code here
-//                return true;
-//
-//        }
-//return true;
-//    }
+
     private void showToast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
@@ -312,7 +244,7 @@ android.app.ActionBar actionBar;
 
             String date = c.getString(c.getColumnIndex(staticmyclass.My_date));
             String time = c.getString(c.getColumnIndex(staticmyclass.My_time));
-//            Log.i("TAG5", "setUpViews: ");
+
             Log.i("TAG3",title);
             Log.i("TAG3",description);
             Log.i("TAG3",date);
@@ -322,7 +254,7 @@ android.app.ActionBar actionBar;
 
 
         }
-        // Log.i(TAG, "setUpViews: ");
+
         adapter.notifyDataSetChanged();
 
     }
@@ -330,7 +262,7 @@ android.app.ActionBar actionBar;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //   View v = View.inflate(MainActivity.this, R.layout.myitemlook, null);
+
 
         if (requestCode == 2) {
             if (resultCode == Activity.RESULT_OK) {
@@ -351,58 +283,7 @@ android.app.ActionBar actionBar;
             }
     }
 
-//    @Override
-//    public void onBackPressed() {
-//
-//
-//        super.onBackPressed();
-//    }
-//
-//    @Override
-//    public void finish() {
-//
-//        super.finish();
-//    }
-
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.my_menu, menu);
-//        return true;
-//    }
-
-
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        int a = item.getItemId();
-//        if (a == R.id.about) {
-//
-//            Intent i = new Intent();
-//            i.setAction(Intent.ACTION_VIEW);
-//            Uri uri = Uri.parse("http://codechef.com");
-//            i.setData(uri);
-//            startActivity(i);
-//        } else if (a == R.id.feedback) {
-//
-//            Intent i = new Intent();
-//            i.setAction(Intent.ACTION_SENDTO);
-//            i.setData(Uri.parse("mailto:jatinbindra171998@gmail.com"));
-//            i.putExtra(Intent.EXTRA_SUBJECT, "feedback");
-//            startActivity(i);
-//        } else if (a == R.id.resetdata) {
-//            HelperTodolist helperTodolist = new HelperTodolist(MainActivity.this);
-//            SQLiteDatabase db =helperTodolist.getWritableDatabase();
-//             db.delete(staticmyclass.Table_Name,null,null);
-//
-//            while (reminder.size() != 0) {
-//                reminder.remove(reminder.size() - 1);
 
 
             }
-//            adapter.notifyDataSetChanged();
-//        }
 
-//        return true;
-
-//    }
-//}
