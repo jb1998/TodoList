@@ -35,7 +35,7 @@ public class Startpage extends AppCompatActivity  {
             @Override
             public void onAnimationEnd(Animation animation) {
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

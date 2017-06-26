@@ -13,35 +13,33 @@
 
     <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="50dp">
+    android:layout_height="150dp"
+
+        android:orientation="horizontal">
         <EditText
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:inputType="textPersonName"
             android:hint="TITLE"
             android:ems="10"
-
+            android:textColor="@color/colorAccent"
             android:id="@+id/title"
             android:textStyle="normal|bold"
             android:textAlignment="center" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp">
         <EditText
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:inputType="textPersonName"
+            android:layout_weight="1"
+            android:inputType="textMultiLine"
             android:hint="DESCRIPTION"
             android:ems="10"
+            android:textColor="@color/colorAccent"
             android:id="@+id/description"
             android:textStyle="normal|bold"
             android:textAlignment="center" />
-
-
-
-
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -53,47 +51,55 @@
             app:srcCompat="@android:drawable/ic_menu_recent_history"
             android:id="@+id/imageView" />
         <Button
-            android:text="TIME"
+            android:text="CURRENT TIME"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/time"
+
             android:layout_weight="1"
-            android:background="#00ffffff"/>
+           />
 
 
         <Button
-            android:text="DATE"
+            android:text="CURRENT DATE"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/date"
-            android:background="#00ffffff"
+
             android:layout_weight="1" />
     </LinearLayout>
+
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp">
-        <CheckBox
-            android:text="Repeat"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/repeat"
-            android:layout_weight="1" />
-        <Spinner
+        <TextView
+            android:id="@+id/textView4"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:id="@+id/duration">
+            android:text="Timer : "
+            android:textColor="@color/colorAccent"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="20dp"/>
 
+        <Button
+            android:id="@+id/timer"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
 
-        </Spinner>
-
+            android:text="Select" />
     </LinearLayout>
 
     <Button
-        android:text="SET ITEM"
+        android:id="@+id/set"
+
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:background="#00f"
 
-        android:id="@+id/set" />
+        android:text="SET ITEM" />
 </LinearLayout>
